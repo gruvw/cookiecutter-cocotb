@@ -1,2 +1,3 @@
 # cookiecutter-cocotb
-Template for cocotb testbench
+
+Template for cocotb VHDL test-bench
