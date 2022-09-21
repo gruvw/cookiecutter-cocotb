@@ -12,12 +12,7 @@ def assert_log(expected, actual, name=None):
     assert expected == actual, err_msg
 
 
-@cocotb.test()
-async def counter_test(dut):
-
-    cocotb.start_soon(Clock(dut.{{cookiecutter.dut_clock_input}}, 4, units="ns").start(start_high=False))
-
-    # INIT
+async def reset(dut):
     await FallingEdge(dut.{{cookiecutter.dut_clock_input}})
     # TODO RESET (default inputs)
     dut.{{cookiecutter.dut_reset_input}}.value = 1
@@ -25,8 +20,14 @@ async def counter_test(dut):
     dut.{{cookiecutter.dut_reset_input}}.value = 0
     await RisingEdge(dut.{{cookiecutter.dut_clock_input}})
 
-    await Timer(2, units="ns")
 
+@cocotb.test()
+async def counter_test(dut):
+
+    cocotb.start_soon(Clock(dut.{{cookiecutter.dut_clock_input}}, 4, units="ns").start(start_high=False))
+    await reset(dut)
+
+    await Timer(2, units="ns")
     assert_log(0, dut.{{cookiecutter.dut_reset_input}}.value)
 
     print(colored("Test finished!", "green"))
