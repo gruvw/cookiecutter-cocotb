@@ -1,0 +1,9 @@
+{
+    "project_name": "cocotb",
+    "sim": "ghdl",
+    "vhdl_top_level": "top_level_vhdl",
+    "python_test_name": "test",
+    "waves_output_name": "waves",
+    "dut_reset_input": "rst",
+    "dut_clock_input": "clk"
+}
