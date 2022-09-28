@@ -22,7 +22,7 @@ async def reset(dut):
 
 
 @cocotb.test()
-async def counter_test(dut):
+async def test(dut):
 
     cocotb.start_soon(Clock(dut.{{cookiecutter.dut_clock_input}}, 4, units="ns").start(start_high=False))
     await reset(dut)
