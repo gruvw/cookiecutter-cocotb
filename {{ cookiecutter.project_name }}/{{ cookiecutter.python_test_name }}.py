@@ -53,5 +53,5 @@ def test_runner():
 
 
 if __name__ == "__main__":
-    # make -C cocotb/
+    # make -C {{ cookiecutter.project_name }}/
     test_runner()
