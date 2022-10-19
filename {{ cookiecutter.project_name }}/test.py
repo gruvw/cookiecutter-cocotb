@@ -5,11 +5,11 @@ import importlib.util
 import sys
 
 
-def assert_log(expected, actual, name="Assert error"):
+def assert_log(expected, actual, name="Assert"):
     if expected != actual:
         s_expected, s_actual = str(expected), str(actual)
         padding = max(len(s_expected), len(s_actual))
-        msg = f"[red]{name} error:\nExpected: {s_expected:>{padding}}\nActual:   {s_actual:>{padding}}"
+        msg = f"[red][bold]{name}[/bold] error:\nExpected: {s_expected:>{padding}}\nActual:   {s_actual:>{padding}}"
         print(msg)
         exit()
 
@@ -30,7 +30,7 @@ def test_runner():
     vhdl_sources = [file for files in (p.glob("**/*.vhd") for p in paths) for file in files]
     build_params = dict(
         vhdl_sources=vhdl_sources,
-        build_dir=path / "sim_build",
+        build_dir=path / "sim",
     )
     test_params = lambda name: dict(
         extra_args=[

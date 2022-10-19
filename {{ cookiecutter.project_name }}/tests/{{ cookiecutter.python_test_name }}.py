@@ -13,8 +13,8 @@ async def reset(dut):
     # TODO RESET (default inputs)
     dut.{{cookiecutter.dut_reset_input}}.value = 1
     await RisingEdge(dut.{{cookiecutter.dut_clock_input}})
-    dut.{{cookiecutter.dut_reset_input}}.value = 0
     await FallingEdge(dut.{{cookiecutter.dut_clock_input}})
+    dut.{{cookiecutter.dut_reset_input}}.value = 0
 
 
 @cocotb.test()
